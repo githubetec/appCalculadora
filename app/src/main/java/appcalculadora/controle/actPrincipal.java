@@ -12,7 +12,7 @@ public class actPrincipal extends AppCompatActivity {
 
     TextView txtNumero;
     EditText edtNumero;
-    Button btnSomar, btnSubtrair,btnmultiplicar,btnDividir;
+    Button btnSomar, btnIgual;
     private float numero1, numero2, resultado;
     private String operacao;
 
@@ -23,6 +23,8 @@ public class actPrincipal extends AppCompatActivity {
         txtNumero=findViewById(R.id.txtNumero);
         edtNumero=findViewById(R.id.edtNumero);
         btnSomar=findViewById(R.id.btnSomar);
+        btnIgual=findViewById(R.id.btnIgual);
+        btnIgual.setEnabled(false);
     }
     public void Somar(View view) {
         operacao="+";
@@ -37,14 +39,20 @@ public class actPrincipal extends AppCompatActivity {
             txtNumero.setText(txtNumero.getText()+String.valueOf(numero2)+" = "+String.valueOf(resultado));
         }
         LimparNumeros();
-        HabilitaBotoes(view);
+        HabilitaBotoes();
     }
     public void LimparNumeros() {
         edtNumero.setText("");
         edtNumero.requestFocus();
         btnSomar.setEnabled(false);
+        if(btnIgual.isEnabled()) {
+            btnIgual.setEnabled(false);
+        }
+        else {
+            btnIgual.setEnabled(true);
+        }
     }
-    public void HabilitaBotoes(View view) {
+    public void HabilitaBotoes() {
         btnSomar.setEnabled(true);
     }
 }
